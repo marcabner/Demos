@@ -15,7 +15,7 @@ public class Country {
     {
         if(listPersons == null)
         {
-        	listPersons = new ArrayList<>();
+        	listPersons = new ArrayList<String>();
         }
         return listPersons;
     }
