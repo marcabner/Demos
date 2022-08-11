@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="siser2285" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="74a1cd4c-fa52-46e0-a0cf-00baac0672cf">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="480"/>
+	<parameter name="fechaCalculo" class="java.util.Date"/>
+	<parameter name="fechaActual" class="java.util.Date"/>
+	<parameter name="estatus" class="java.lang.String"/>
+	<parameter name="poliza" class="java.lang.String"/>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="curp" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="calleNumero" class="java.lang.String"/>
+	<parameter name="ciudadEstado" class="java.lang.String"/>
+	<parameter name="fechaNacimiento" class="java.lang.String"/>
+	<parameter name="fechaInicioVig" class="java.lang.String"/>
+	<parameter name="planSeguro" class="java.lang.String"/>
+	<parameter name="formaPago" class="java.lang.String"/>
+	<parameter name="primaCobro" class="java.lang.String"/>
+	<parameter name="sumaAsegurada" class="java.lang.String"/>
+	<parameter name="codigoPostal" class="java.lang.String"/>
+	<parameter name="claveRetenedor" class="java.lang.String"/>
+	<parameter name="identNominal" class="java.lang.String"/>
+	<parameter name="fechaSiniestro" class="java.util.Date"/>
+	<parameter name="fechaCalculoServicio" class="java.util.Date"/>
+	<parameter name="fechaReclamacionServicio" class="java.util.Date"/>
+	<parameter name="pagoNetoServicio" class="java.math.BigDecimal"/>
+	<parameter name="nombreAsegAdicional" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="205" height="37" uuid="68d1bcf1-5420-4005-ac48-a47c2af74844"/>
+				<imageExpression><![CDATA["C:\\Users\\yaramire\\Workspaces\\eclipse_workspace\\Pruebas\\src\\logo_metlife_negro_completo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="236" y="17" width="100" height="20" uuid="9dc9acea-9bcf-4a39-b4d2-78cce7fdad65"/>
+				<text><![CDATA[METLIFE MEXICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="37" width="230" height="20" uuid="917f774b-51ef-4535-a2d8-b00722774780"/>
+				<text><![CDATA[SISTEMA PROVIDA DE SEGURO INDIVIDUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="57" width="100" height="20" uuid="0c36a764-5121-4a84-98b5-139743cafc59"/>
+				<text><![CDATA[Cálculo del Servicio al]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement x="305" y="57" width="167" height="20" uuid="f1f3a45b-d8d5-446e-aa10-c63dc7c1de00"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaCalculo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="472" y="0" width="100" height="20" uuid="aa6da42f-502d-4d2a-9d5b-1d3b17643bb3"/>
+				<textFieldExpression><![CDATA[$P{fechaActual}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="472" y="20" width="100" height="20" uuid="cb269034-6d5c-4ca2-97b2-1171c80fa2a1"/>
+				<textFieldExpression><![CDATA[$P{fechaActual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="472" y="40" width="100" height="20" uuid="eb14462c-95b3-4f0e-9efd-f61b9125ee8b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[SISER22841]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="0" width="100" height="20" uuid="c3088803-e298-4174-b336-2fd2550603d2"/>
+				<text><![CDATA[SERVICIO 2285]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="53" height="20" uuid="d93cf52a-21ce-4a05-adaf-28f65d9cd826"/>
+				<text><![CDATA[STATUS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="399" y="0" width="100" height="20" uuid="e20135b2-c5c1-4658-8cf7-b0d7f667ce65"/>
+				<textFieldExpression><![CDATA[$P{estatus}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="123" y="20" width="349" height="20" uuid="df0c64fa-da3e-40dd-a394-fef76b1ee6de"/>
+				<text><![CDATA[SINIESTRO DEL BENEFICIO DE GASTOS FUNERARICONYUGUE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="450" splitType="Stretch">
+			<line>
+				<reportElement x="5" y="1" width="557" height="1" uuid="b1582a5a-e660-4050-a9ca-96688d38ca34"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="4" width="118" height="20" uuid="425945c2-143f-488b-958c-cd53f6381b03"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. DATOS GENERALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="35" width="43" height="20" uuid="81e7d711-fa0b-4d30-b2a2-8fce25236a7c"/>
+				<text><![CDATA[Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="55" width="43" height="20" uuid="c42938d2-0f84-490e-bbda-24fd18de4743"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="75" width="85" height="20" uuid="4d1d0ac1-7232-4651-b1f2-1a48f440da4f"/>
+				<text><![CDATA[Calle y Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="95" width="85" height="20" uuid="fd0dcaa7-4bf0-41cf-ba89-ec98b283a513"/>
+				<text><![CDATA[Ciudad y Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="115" width="85" height="20" uuid="c351d45e-6162-4530-b122-9c8d65bce74f"/>
+				<text><![CDATA[Fecha Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="135" width="85" height="20" uuid="b6535e9e-e34a-46bc-8e8f-5590484a7a97"/>
+				<text><![CDATA[Fecha Inicio Vig.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="155" width="85" height="20" uuid="33767222-5b3b-456c-a96d-3be662d7c44b"/>
+				<text><![CDATA[Plan del Seguro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="175" width="85" height="20" uuid="05ac3cca-1d54-4be2-b88e-88bcb946ff73"/>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="195" width="85" height="20" uuid="962b469b-b1b4-41d8-8e55-1c6de88c5009"/>
+				<text><![CDATA[Prima al Cobro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="215" width="85" height="20" uuid="32103bcd-a33a-449b-93c3-3d4f324b73ff"/>
+				<text><![CDATA[Suma Asegurada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="35" width="35" height="20" uuid="dcb5baf2-7430-402a-a1fb-3590394d46e2"/>
+				<text><![CDATA[R.F.C.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="35" width="86" height="20" uuid="ff9aa1b8-5d2b-450e-874b-60b41044a3fc"/>
+				<text><![CDATA[C.U.R.P.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="48" y="35" width="100" height="20" uuid="ed2572cc-d16d-491b-9583-6afb3155a8d2"/>
+				<textFieldExpression><![CDATA[$P{poliza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="35" width="100" height="20" uuid="cf9fe472-7cfa-41f6-8cd0-9bc6ce8b44cf"/>
+				<textFieldExpression><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="35" width="100" height="20" uuid="3cd35f6b-e9e1-48e4-9b9b-0a79eb581acb"/>
+				<textFieldExpression><![CDATA[$P{curp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="75" width="86" height="20" uuid="242a7e36-69cd-4d22-8b8b-5e8efb7e1d36"/>
+				<text><![CDATA[Código Postal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="415" y="75" width="100" height="20" uuid="a043ab3d-b00e-4dfe-aab6-acee9be0bf7c"/>
+				<textFieldExpression><![CDATA[$P{codigoPostal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="115" width="86" height="20" uuid="5e375bca-c848-4065-b236-4a2515937a31"/>
+				<text><![CDATA[Clave Retenedor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="415" y="115" width="100" height="20" uuid="c81da9dd-99e5-4449-aec4-d6109c06cb5c"/>
+				<textFieldExpression><![CDATA[$P{claveRetenedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="135" width="86" height="20" uuid="1d30acb9-e920-446a-a088-23c3bc77fc84"/>
+				<text><![CDATA[Ident. Nominal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="415" y="135" width="100" height="20" uuid="4ee726dd-8ea1-42d9-9630-9332a8b8ecce"/>
+				<textFieldExpression><![CDATA[$P{identNominal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="55" width="257" height="20" uuid="7b6d047e-2c7a-4b00-88f8-c56bb81755ab"/>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="75" width="215" height="20" uuid="dbff7226-abb4-43f1-8e4f-0e0cd71e89a9"/>
+				<textFieldExpression><![CDATA[$P{calleNumero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="95" width="215" height="20" uuid="34f4b94f-2268-4fe2-ac9e-8c3f771696ef"/>
+				<textFieldExpression><![CDATA[$P{ciudadEstado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="115" width="215" height="20" uuid="6c1e902a-d4f5-41a4-82f4-94f323ac0ad3"/>
+				<textFieldExpression><![CDATA[$P{fechaNacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="135" width="215" height="20" uuid="b5c16f05-5a50-43c7-a098-aa9461558db9"/>
+				<textFieldExpression><![CDATA[$P{fechaInicioVig}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="155" width="215" height="20" uuid="73303682-f946-4107-adcf-c76a80741d23"/>
+				<textFieldExpression><![CDATA[$P{planSeguro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="175" width="215" height="20" uuid="e9502e92-f189-4bf1-8c0a-be66b16cbeda"/>
+				<textFieldExpression><![CDATA[$P{formaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="195" width="215" height="20" uuid="44558978-c5eb-4c70-8c64-f418a89c9cc5"/>
+				<textFieldExpression><![CDATA[$P{primaCobro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="215" width="215" height="20" uuid="850e6e73-6045-403f-be78-66ca7db9e0a6"/>
+				<textFieldExpression><![CDATA[$P{sumaAsegurada}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="241" width="557" height="1" uuid="20a0a1fa-fd92-46d8-ac77-9bfcd8d39bba"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="242" width="267" height="20" uuid="28675167-e3ea-46f9-9e42-2ae2ca4de8a2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. DATOS A LA FECHA DE CALCULO DEL SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="272" width="165" height="20" uuid="8f5cabe8-2bf1-4b97-b724-2dcfb8d8b69d"/>
+				<text><![CDATA[Fecha del Siniestro                      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="292" width="165" height="20" uuid="894d4ca1-5126-4f76-adcc-2c9db60ad3f9"/>
+				<text><![CDATA[Fecha de Calculo del Servicio     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="312" width="165" height="20" uuid="c821a251-4c4c-4faf-adce-95ddca9475d1"/>
+				<text><![CDATA[Fecha de reclamacion del Servicio:]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="172" y="272" width="143" height="20" uuid="cd086910-6171-45a6-926a-ea3edee9d38e"/>
+				<textFieldExpression><![CDATA[$P{fechaSiniestro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="172" y="292" width="143" height="20" uuid="ef718b20-dd51-4de9-b1bc-73636d2ca4ca"/>
+				<textFieldExpression><![CDATA[$P{fechaCalculoServicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="172" y="312" width="143" height="20" uuid="5e97656c-29cf-44a8-a29d-8f03c8d1b0cf"/>
+				<textFieldExpression><![CDATA[$P{fechaReclamacionServicio}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="337" width="557" height="1" uuid="12e44114-6ee4-4ee4-88c5-395f2affacd6"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="339" width="267" height="20" uuid="52a6bf2a-b5ef-495e-b0e3-d42aee824a1f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. VALORES DEL SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="369" width="118" height="20" uuid="f2b81029-be07-4b5a-9014-812571eda120"/>
+				<text><![CDATA[Pago neto del Servicio:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="123" y="369" width="100" height="20" uuid="079e8dc7-677f-4d08-8e0f-23b28ac662ae"/>
+				<textFieldExpression><![CDATA[$P{pagoNetoServicio}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="394" width="557" height="1" uuid="ed4c7d36-cb54-4fad-a695-4b745a87fdde"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="396" width="267" height="20" uuid="6bb00ada-7b77-4820-bc44-5d73e7ffc752"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. Datos del Aseg. Adicional.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="426" width="118" height="20" uuid="1ec884f4-683c-4ebc-af2c-25df867f8f35"/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="123" y="426" width="439" height="20" uuid="3e6d763d-c454-4b46-8bb3-28575b988f3d"/>
+				<textFieldExpression><![CDATA[$P{nombreAsegAdicional}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="90" splitType="Stretch">
+			<line>
+				<reportElement x="5" y="3" width="557" height="1" uuid="08ca02ce-1a3c-4196-a655-c4997f92c0e3"/>
+			</line>
+			<staticText>
+				<reportElement x="23" y="54" width="23" height="13" uuid="2d76ef8f-1de6-4975-80b4-0e78bfcc7ac7"/>
+				<text><![CDATA[DDS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="34" y="30" width="136" height="1" uuid="3e0ca623-dcec-4af7-88c9-12299f9bd7da"/>
+			</line>
+			<line>
+				<reportElement x="399" y="29" width="157" height="1" uuid="809d7237-2fa0-441e-a95b-64a017ddb563"/>
+			</line>
+			<staticText>
+				<reportElement x="83" y="34" width="40" height="20" uuid="457be09f-6d28-4829-9c5c-43685dca2788"/>
+				<text><![CDATA[Elaboró]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="31" width="38" height="23" uuid="aa21c785-cc6a-4750-828f-31f0cb8cdffc"/>
+				<text><![CDATA[Autorizó]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="54" width="116" height="13" uuid="1a2b8418-4d6b-425a-ad9c-657cf0931382"/>
+				<text><![CDATA[Coordinador de servicio A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="67" width="64" height="13" uuid="49694eea-b3be-4537-a100-c9a2d857ec3e"/>
+				<text><![CDATA[Asegurados]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
