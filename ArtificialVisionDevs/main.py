@@ -4,7 +4,7 @@ from WebCamDevs import WebCamDevs
 
 if __name__ == '__main__':
 
-    real_time = WebCamDevs(1).open_camera()
+    real_time = WebCamDevs(0).open_camera()
 
     """image = cv2.imread('OpenCV_Logo.jpg')
     lower_red = np.array([0, 0, 200], dtype="uint8")
