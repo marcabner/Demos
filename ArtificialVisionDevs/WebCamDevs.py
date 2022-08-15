@@ -32,24 +32,24 @@ class WebCamDevs:
             # for each color and bitwise_and operator
             # between imageFrame and mask determines
             # to detect only that particular color
-            kernal = np.ones((5, 5), "uint8")
+            kernal = np.ones((125, 125), "uint8")
             # For red color
             mask_red = cv2.dilate(mask_red, kernal)
-            res_red = cv2.bitwise_and(imageFrame, imageFrame, mask=mask_red)
+
             # For green color
             mask_green = cv2.dilate(mask_green, kernal)
-            res_green = cv2.bitwise_and(imageFrame, imageFrame, mask=mask_green)
+
             # For blue color
             mask_blue = cv2.dilate(mask_blue, kernal)
-            res_blue = cv2.bitwise_and(imageFrame, imageFrame, mask=mask_blue)
+
             # Creating contour to track red color
             contours, hierarchy = cv2.findContours(mask_red,
-                                                   cv2.RETR_TREE,
+                                                   cv2.RETR_LIST,
                                                    cv2.CHAIN_APPROX_SIMPLE)
 
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 300):
+                if (area > 500):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
@@ -62,12 +62,12 @@ class WebCamDevs:
 
             # Creating contour to track green color
             contours, hierarchy = cv2.findContours(mask_green,
-                                                   cv2.RETR_TREE,
+                                                   cv2.RETR_LIST,
                                                    cv2.CHAIN_APPROX_SIMPLE)
 
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 300):
+                if (area > 500):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
@@ -80,11 +80,11 @@ class WebCamDevs:
 
             # Creating contour to track blue color
             contours, hierarchy = cv2.findContours(mask_blue,
-                                                   cv2.RETR_TREE,
+                                                   cv2.RETR_LIST,
                                                    cv2.CHAIN_APPROX_SIMPLE)
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 300):
+                if (area > 500):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
@@ -96,7 +96,7 @@ class WebCamDevs:
                                 1.0, (255, 0, 0))
 
             the_mask = cv2.bitwise_or(mask_red, mask_blue, mask_green)
-            detected_output = cv2.bitwise_and(imageFrame, imageFrame, mask=the_mask)
+
             print("Red Colour count = %s" % (redCount))
             print("Green Colour count = %s" % (greenCount))
             print("Blue Colour count = %s" % (blueCount))
