@@ -9,6 +9,9 @@ class WebCamDevs:
 
     def open_camera(self):
         vid = cv2.VideoCapture(self.num_camera)
+        redCount = 0
+        greenCount = 0
+        blueCount = 0
         while (True):
             ret, imageFrame = vid.read()
             hsvFrame = cv2.cvtColor(imageFrame, cv2.COLOR_BGR2HSV)
@@ -52,6 +55,7 @@ class WebCamDevs:
                                                (x + w, y + h),
                                                (0, 0, 255), 2)
 
+                    redCount+=1
                     cv2.putText(imageFrame, "Red Colour", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0,
                                 (0, 0, 255))
@@ -69,6 +73,7 @@ class WebCamDevs:
                                                (x + w, y + h),
                                                (0, 255, 0), 2)
 
+                    greenCount+=1
                     cv2.putText(imageFrame, "Color Verde", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX,
                                 1.0, (0, 255, 0))
@@ -85,12 +90,16 @@ class WebCamDevs:
                                                (x + w, y + h),
                                                (255, 0, 0), 2)
 
+                    blueCount+=1
                     cv2.putText(imageFrame, "Color Azul", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX,
                                 1.0, (255, 0, 0))
 
             the_mask = cv2.bitwise_or(mask_red, mask_blue, mask_green)
             detected_output = cv2.bitwise_and(imageFrame, imageFrame, mask=the_mask)
+            print("Red Colour count = %s" % (redCount))
+            print("Green Colour count = %s" % (greenCount))
+            print("Blue Colour count = %s" % (blueCount))
 
             cv2.imshow('Detection de colores multiple en tiempo real', imageFrame)
             if cv2.waitKey(10) & 0xFF == ord('q'):
