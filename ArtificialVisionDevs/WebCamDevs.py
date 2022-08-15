@@ -32,7 +32,7 @@ class WebCamDevs:
             # for each color and bitwise_and operator
             # between imageFrame and mask determines
             # to detect only that particular color
-            kernal = np.ones((125, 125), "uint8")
+            kernal = np.ones((50, 50), "uint8")
             # For red color
             mask_red = cv2.dilate(mask_red, kernal)
 
@@ -49,14 +49,12 @@ class WebCamDevs:
 
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 500):
+                if (area > 3000 and area < 60000):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
                                                (0, 0, 255), 2)
-
-                    redCount+=1
-                    cv2.putText(imageFrame, "Red Colour", (x, y),
+                    cv2.putText(imageFrame, "Rojo", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0,
                                 (0, 0, 255))
 
@@ -67,14 +65,12 @@ class WebCamDevs:
 
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 500):
+                if (area > 3000 and area < 60000):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
                                                (0, 255, 0), 2)
-
-                    greenCount+=1
-                    cv2.putText(imageFrame, "Color Verde", (x, y),
+                    cv2.putText(imageFrame, "Verde", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX,
                                 1.0, (0, 255, 0))
 
@@ -84,19 +80,14 @@ class WebCamDevs:
                                                    cv2.CHAIN_APPROX_SIMPLE)
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
-                if (area > 500):
+                if (area > 3000 and area < 60000):
                     x, y, w, h = cv2.boundingRect(contour)
                     imageFrame = cv2.rectangle(imageFrame, (x, y),
                                                (x + w, y + h),
                                                (255, 0, 0), 2)
-
-                    blueCount+=1
-                    cv2.putText(imageFrame, "Color Azul", (x, y),
+                    cv2.putText(imageFrame, "Azul", (x, y),
                                 cv2.FONT_HERSHEY_SIMPLEX,
                                 1.0, (255, 0, 0))
-
-            the_mask = cv2.bitwise_or(mask_red, mask_blue, mask_green)
-
             print("Red Colour count = %s" % (redCount))
             print("Green Colour count = %s" % (greenCount))
             print("Blue Colour count = %s" % (blueCount))
