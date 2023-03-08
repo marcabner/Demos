@@ -5,6 +5,10 @@ import numpy as np
 import cv2
 import base64
 import urllib.request
+from selenium import webdriver
+import time
+import os, time
+from selenium.webdriver.common.by import By
 from werkzeug.utils import secure_filename
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -63,6 +67,66 @@ def upload_file():
         resp = jsonify(errors)
         resp.status_code = 500
         return resp
+
+@app.route("/notificarEvento", methods=['POST'])
+def notificar_evento():
+    driver = webdriver.Chrome(executable_path=r"C:\SW\chromedriver_win32\chromedriver.exe")
+    message = 'Automatizacion de mensajes whatsApp con Selenium y Flask!'
+    version = 'Python %s\n' % sys.version.split()[0]
+    message = ' '.join([message, version])
+    driver.get("https://web.whatsapp.com/")
+    time.sleep(10)
+
+    celular = "5215517791884"
+    mensaje = "Hola, mi primer BOT con Selenium."
+
+    driver.get("https://wa.me/" + celular + "?text=" + mensaje)
+    time.sleep(5)
+
+    btn = driver.find_element(By.ID, "action-button")
+    btn.click()
+    time.sleep(5)
+    btn = driver.find_element(By.XPATH, "//*[@id='fallback_block']/div/div/h4[2]/a")
+    btn.click()
+    time.sleep(30)
+
+    # boton enviar                        //*[@id='main']/footer/div[1]/div[3]
+    btn = driver.find_element(By.XPATH, "//*[@id='main']/footer/div[1]/div/span[2]/div/div[2]/div[2]")
+    btn.click()
+    time.sleep(5)
+
+    print("-- Fin de Bot--")
+
+    time.sleep(180)
+
+    driver.get("https://web.whatsapp.com/")
+    time.sleep(10)
+
+    celular = "5215527631812"
+    mensaje = "*Hola, mi primer BOT con Selenium.*"
+
+    driver.get("https://wa.me/" + celular + "?text=" + mensaje)
+    time.sleep(5)
+
+    btn = driver.find_element(By.ID, "action-button")
+    btn.click()
+    time.sleep(5)
+    btn = driver.find_element(By.XPATH, "//*[@id='fallback_block']/div/div/h4[2]/a")
+    btn.click()
+    time.sleep(30)
+
+    # boton enviar                        //*[@id='main']/footer/div[1]/div[3]
+    btn = driver.find_element(By.XPATH, "//*[@id='main']/footer/div[1]/div/span[2]/div/div[2]/div[2]")
+    btn.click()
+    time.sleep(5)
+
+    print("-- Fin de Bot--")
+
+    time.sleep(180)
+
+    driver.close()
+
+    return jsonify({"message": message, "calculate": calculate()})
 
 def calculate():
     v1 = np.array([123, 456, 789])
