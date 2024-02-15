@@ -43,7 +43,7 @@ public class App
         String poliza = "AA28450";
         String rfc = "RAEY860626TTB";
         String curp = "RAEY860626GNXNBE92";
-        String nombre = "Yair Abner Ramírez Enríquez";
+        String nombre = "Yair Ramírez";
         String calleNumero = "Calle Colima 54B";
         String ciudadEstado = "Coacalco de Berriozabal, Estado de México";
         String fechaNacimiento = "14 de Abril de 1986";
